@@ -1,0 +1,11 @@
+{
+  "name": "Jackal Wallet Proto",
+  "version": "0.0.1",
+  "description": "latest wallet",
+  "manifest_version": 3,
+  "author": "me",
+  "action":{
+    "default_popup": "index.html",
+    "default_title": "latest wallet"
+  }
+}
