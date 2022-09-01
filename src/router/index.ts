@@ -7,9 +7,30 @@ const routes: Array<RouteRecordRaw> = [
   //   component: () => import(/* webpackChunkName: "tagged" */ '../views/Tagged.vue')
   // },
   {
+    path: '/activity',
+    name: 'Activity',
+    component: () => import(/* webpackChunkName: "addwallet" */ '../views/Activity.vue')
+  },
+  {
+    path: '/passwords',
+    name: 'Passwords',
+    component: () => import(/* webpackChunkName: "addwallet" */ '../views/Passwords.vue')
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: () => import(/* webpackChunkName: "addwallet" */ '../views/Settings.vue')
+  },
+  {
+    path: '/swap',
+    name: 'Swap',
+    component: () => import(/* webpackChunkName: "addwallet" */ '../views/Swap.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "tagged" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+    // component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   }
 ]
 
