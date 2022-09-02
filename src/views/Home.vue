@@ -15,7 +15,13 @@ import BalanceItem from '@/components/BalanceItem.vue'
     BalanceItem
   },
   props: {},
-  data: () => ({}),
+  data: () => ({
+    details: {
+      networkName: 'Jackal',
+      ticker: 'JKL',
+      total: 42
+    }
+  }),
   methods: {},
   computed: {}
 })

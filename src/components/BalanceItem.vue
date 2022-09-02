@@ -11,16 +11,11 @@
 </template>
 
 <script lang="ts">
+import { totalmem } from 'os';
 import { Options, Vue } from 'vue-class-component'
 
 @Options({
-  data: () => ({
-    details: {
-      networkName: 'Jackal',
-      ticker: 'JKL',
-      total: 42
-    }
-  })
+  props: ["details"],
 })
 export default class BalanceItem extends Vue {}
 </script>
