@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <BalanceItem />
-    <BalanceItem />
-    <BalanceItem />
+    <BalanceItem :details="details"/>
+    <BalanceItem :details="details"/>
+    <BalanceItem :details="details"/>
   </div>
 </template>
 
@@ -17,9 +17,11 @@ import BalanceItem from '@/components/BalanceItem.vue'
   props: {},
   data: () => ({
     details: {
-      networkName: 'Jackal',
-      ticker: 'JKL',
-      total: 42
+      networkName: 'Ethereum',
+      ticker: 'ETH',
+      total: 0.01,
+      USD: 15.86,
+      change: 0.42
     }
   }),
   methods: {},
