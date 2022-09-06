@@ -1,14 +1,19 @@
 <template>
   <div class="balance">
     <div class="details">
-      <img class="icon"/>
-      <div class="upper">
-        <span>{{ details.networkName }}</span>
-        <span>${{ details.USD }}</span>
-      </div>
-      <div class="lower">
-        <span>{{ details.total }} {{ details.ticker }}</span>
-        <span>{{ details.change }}</span>
+      <div class="main-region">
+        <img class="icon"/>
+        <div class="text-region">
+          <div class="upper">
+            <span>{{ details.networkName }}</span>
+            <span>${{ details.USD }}</span>
+          </div>
+          <div class="lower">
+            <span>{{ details.total }} {{ details.ticker }}</span>
+            <span v-if="details.change > 0" class="positive-green">+{{ details.change }}</span>
+            <span v-if="details.change < 0" class="negative-red">{{ details.change }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,9 +37,10 @@ export default class BalanceItem extends Vue {}
     flex-direction: row;
   }
   .icon {
-    height: 64px;
-    width: 64px;
-    float: left;
+    height: 36px;
+    width: 36px;
+    order: 0;
+    border-radius: 100%;
   }
   .details {
     width: 315px;
@@ -46,20 +52,39 @@ export default class BalanceItem extends Vue {}
     margin-top: 5px;
     margin-bottom: 5px;
     color: #DCE2F9;
+    display: flex;
   }
   .upper {
     display: flex;
     justify-content: space-between;
     font-family: 'Poppins';
-    font-size: 22.5px;
-    float: left;
+    font-size: 21.9px;
+    line-height: 18px;
   }
-
   .lower {
     display: flex;
     justify-content: space-between;
     font-family: 'Segoe UI';
     font-size: 16.5px;
-    float: left;
+    line-height: 16.5px;
+  }
+  .text-region {
+    order: 2;
+    width: 243px;
+    height: 36px;
+    position: relative;
+    left: 11px;
+  }
+  .main-region {
+    width: 289.5px;
+    height: 36px;
+    margin: auto;
+    display: flex;
+  }
+  .positive-green {
+    color: #82E09B;
+  }
+  .negative-red {
+    color: #FFB4AB;
   }
 </style>
