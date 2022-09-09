@@ -2,7 +2,7 @@
   <div class="home">
     <div class="row justify-center">
       <div class="column header-region">
-        <h1 class="balance">${{ balance }}</h1>
+        <h1 class="header">${{ balance }}</h1>
         <div class="row test-coloration">
           <div class="left-head">
             <h2 class="change-positive">+${{ changeUSD }}</h2>
@@ -83,7 +83,7 @@ export default class Home extends Vue {}
 .header-region {
   text-align: center;
 }
-.balance {
+.header {
   color: #E3E2E6;
   font-size: 47px;
   line-height: 47px;
@@ -119,7 +119,7 @@ export default class Home extends Vue {}
   padding: 0px;
   width: 146.25px;
   height: 55.47px;
-  font-family: "Roboto";
+  font-family: "Segoe UI";
   font-weight: medium;
   font-size: 19.4px;
   margin-top: 15px;
