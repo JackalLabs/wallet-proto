@@ -11,27 +11,27 @@
           <h2 class="swap-group-label">From</h2>
           <div class="input-region">
             <div class="swap-input">
-              <input type="text" class="swap-text-in"/>
+              <input type="text" class="swap-text-in" v-model="fromInfo.amt"/>
             </div>
             <button class="swap-dropdown">
-              <img class="crypto-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Ethereum_logo_translucent.svg/640px-Ethereum_logo_translucent.svg.png"/>
-              <span class="dropdown-text">Test</span>
+              <img class="crypto-logo" :src="fromInfo.logo"/>
+              <span class="dropdown-text">{{ fromInfo.name }}</span>
               <span class="material-symbols-outlined dropdown-icon">arrow_drop_down</span>
             </button>
           </div>
         </div>
-        <button class="rotate-button">
+        <button class="rotate-button" @click="rotate">
           <span class="material-symbols-outlined">swap_horiz</span>
         </button>
         <div class="to-group">
           <h2 class="swap-group-label">To</h2>
           <div class="input-region">
             <div class="swap-input">
-              <input type="text" class="swap-text-in"/>
+              <input type="text" class="swap-text-in" v-model="toInfo.amt"/>
             </div>
             <button class="swap-dropdown">
-              <img class="crypto-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Ethereum_logo_translucent.svg/640px-Ethereum_logo_translucent.svg.png"/>
-              <span class="dropdown-text">Test</span>
+              <img class="crypto-logo" :src="toInfo.logo"/>
+              <span class="dropdown-text">{{ toInfo.name }}</span>
               <span class="material-symbols-outlined dropdown-icon">arrow_drop_down</span>
             </button>
           </div>
@@ -41,26 +41,6 @@
         </button>
       </div>
     </div>
-
-    <!--
-    <div>pay</div>
-    <div>
-      <input type="text" v-model="pairing.source.amt" />
-      <span> | </span>
-      <select v-model="pairing.source.name">
-        <option v-for="token in tokens" :value="token" :key="token.id" >{{ token }}</option>
-      </select>
-    </div>
-    <div @click="flipSwap">Flip</div>
-    <div>receive</div>
-    <div>
-      <input type="text" v-model="pairing.to.amt" />
-      <span> | </span>
-      <select v-model="pairing.to.name">
-        <option v-for="token in tokens" :value="token" :key="token.id" >{{ token }}</option>
-      </select>
-    </div>
-    -->
   </div>
 </template>
 
@@ -72,27 +52,21 @@ import { mapMutations } from 'vuex'
   components: {},
   props: {},
   data: () => ({
-    pairing: { source: { name: 'ATOM', amt: 0 }, to: { name: 'JKL', amt: 0 } },
-    sourceName: 'ATOM',
-    toName: 'JKL',
-    tokens: [
-      'JKL',
-      'ATOM',
-      'USDC'
-    ]
+    fromInfo: {
+      amt: null,
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Ethereum_logo_translucent.svg/640px-Ethereum_logo_translucent.svg.png',
+      name: 'ETH'
+    },
+    toInfo: {
+      amt: null,
+      logo: 'test',
+      name: 'test'
+    }
   }),
   methods: {
-    ...mapMutations([]),
-    flipSwap () {
-      this.pairing = Object.assign({}, { source: this.pairing.to, to: this.pairing.source })
-
-      // const to = this.pairing.to
-      // this.pairing.to = this.pairing.source
-      // this.pairing.source = to
+    rotate () {
+      [this.fromInfo, this.toInfo] = [this.toInfo, this.fromInfo]
     }
-  },
-  computed: {
-
   }
 })
 export default class AddWallet extends Vue {}
@@ -184,7 +158,10 @@ export default class AddWallet extends Vue {}
   display: flex;
 }
 .dropdown-icon {
-  font-size: 18px;
+  position: relative;
+  left: 12.5px;
+  font-size: 32.5px;
+  top: 3px;
 }
 .crypto-logo {
   width: 32.5px;
@@ -193,19 +170,15 @@ export default class AddWallet extends Vue {}
   background-color: #E3E2E6;
   position: relative;
   right: 6px;
+  top: 3px;
 }
 .dropdown-text {
   color: #E3E2E6;
   font-family: "Segoe UI";
   font-size: 17.25px;
   position: relative;
-  bottom: 10px;
+  bottom: 7px;
   left: 5px;
-}
-.dropdown-icon {
-  position: relative;
-  left: 12.5px;
-  font-size: 32.5px;
 }
 .rotate-button {
   border-radius: 100%;
